@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,7 +24,19 @@ public class ComicService {
         List<ComicResponseEntry> xkcdComicEntries = xkcdComicService.getComics();
         List<ComicResponseEntry> pdlComicEntries = pdlComicFeedService.getComics();
 
+        List<ComicResponseEntry> combineComics = Stream.of(xkcdComicEntries, pdlComicEntries)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
 
-        return Collections.emptyList();
+
+        Comparator<ComicResponseEntry> compareByInvoiceNumber = new Comparator<ComicResponseEntry>() {
+            @Override
+            public int compare(ComicResponseEntry c1, ComicResponseEntry c2) {
+                return c1.getPublishingDate().compareTo(c2.getPublishingDate());
+            }
+        };
+        combineComics.sort(compareByInvoiceNumber);
+
+        return combineComics;
     }
 }
