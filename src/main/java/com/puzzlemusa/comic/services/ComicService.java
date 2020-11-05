@@ -15,7 +15,7 @@ public class ComicService {
     private XKCDComicService xkcdComicService;
 
     public List<ComicResponseEntry> getComics(){
-        List<XKCDComicEntry> xkcdComicEntries = xkcdComicService.getComics();
+        List<ComicResponseEntry> xkcdComicEntries = xkcdComicService.getComics();
         return Collections.emptyList();
     }
 }

@@ -1,6 +1,8 @@
 package com.puzzlemusa.comic.services;
 
+import com.puzzlemusa.comic.entries.ComicResponseEntry;
 import com.puzzlemusa.comic.entries.XKCDComicEntry;
+import com.puzzlemusa.comic.mappers.XKCDComicEntryMapper;
 import com.puzzlemusa.comic.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +19,10 @@ public class XKCDComicService {
     @Autowired
     RestTemplate restTemplate;
 
-    public List<XKCDComicEntry> getComics() {
+    @Autowired
+    XKCDComicEntryMapper xkcdComicEntryMapper;
+
+    public List<ComicResponseEntry> getComics() {
         List<XKCDComicEntry> xkcdComics = new ArrayList<>();
 
         XKCDComicEntry currentXKCDComicEntry = getCurrentComic();
@@ -31,7 +36,9 @@ public class XKCDComicService {
                     xkcdComics.add(entity.getBody());
             }
         }
-        return xkcdComics;
+        List<ComicResponseEntry> XKCDComicResponseEntries = xkcdComicEntryMapper.mapXKCDEntryToResponseEntry(xkcdComics);
+
+        return XKCDComicResponseEntries;
     }
 
     private XKCDComicEntry getCurrentComic() {

@@ -12,4 +12,10 @@ public class ComicResponseEntry {
     private String pictureURL;
     private String webURL;
 
+    public ComicResponseEntry(String title, Date publishingDate, String pictureURL, String webURL) {
+        this.title = title;
+        this.publishingDate = publishingDate;
+        this.pictureURL = pictureURL;
+        this.webURL = webURL;
+    }
 }
