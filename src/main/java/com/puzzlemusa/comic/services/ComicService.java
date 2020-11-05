@@ -31,7 +31,7 @@ public class ComicService {
         Comparator<ComicResponseEntry> compareByInvoiceNumber = new Comparator<ComicResponseEntry>() {
             @Override
             public int compare(ComicResponseEntry c1, ComicResponseEntry c2) {
-                return c1.getPublishingDate().compareTo(c2.getPublishingDate());
+                return c2.getPublishingDate().compareTo(c1.getPublishingDate());
             }
         };
         combineComics.sort(compareByInvoiceNumber);

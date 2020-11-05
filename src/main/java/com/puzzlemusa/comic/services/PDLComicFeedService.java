@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -33,7 +34,8 @@ public class PDLComicFeedService {
             e.printStackTrace();
         }
 
-        List<ComicResponseEntry> responseEntries = syndEntryToResponseEntryMapper.map(syndEntries);
+        List<SyndEntry> TenSyndEntries = syndEntries.stream().limit(10).collect(Collectors.toList());
+        List<ComicResponseEntry> responseEntries = syndEntryToResponseEntryMapper.map(TenSyndEntries);
         return responseEntries;
     }
 }

@@ -15,7 +15,6 @@ public class SyndEntryToResponseEntryMapper {
             ComicResponseEntry comicResponseEntry = new ComicResponseEntry(syndEntry.getTitle(), syndEntry.getPublishedDate(), syndEntry.getUri(), syndEntry.getLink());
             comicResponseEntries.add(comicResponseEntry);
         }
-
         return comicResponseEntries;
     }
 }
