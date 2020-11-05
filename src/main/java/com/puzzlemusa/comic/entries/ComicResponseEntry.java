@@ -5,12 +5,13 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@Getter @Setter
+@Getter
+@Setter
 public class ComicResponseEntry {
-    private String title;
-    private Date publishingDate;
-    private String pictureURL;
-    private String webURL;
+    private final String title;
+    private final Date publishingDate;
+    private final String pictureURL;
+    private final String webURL;
 
     public ComicResponseEntry(String title, Date publishingDate, String pictureURL, String webURL) {
         this.title = title;

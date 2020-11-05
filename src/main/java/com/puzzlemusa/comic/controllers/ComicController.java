@@ -18,7 +18,7 @@ public class ComicController {
     private ComicService comicService;
 
     @GetMapping
-    public ResponseEntity<List<ComicResponseEntry>> getComics(){
+    public ResponseEntity<List<ComicResponseEntry>> getComics() {
         List<ComicResponseEntry> comicResponseEntries = new ArrayList<>();
 
         List<ComicResponseEntry> comics = comicService.getComics();

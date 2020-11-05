@@ -23,7 +23,7 @@ public class PDLComicFeedService {
     @Autowired
     private SyndEntryToResponseEntryMapper syndEntryToResponseEntryMapper;
 
-    public List<ComicResponseEntry> getComics(){
+    public List<ComicResponseEntry> getComics() {
         List<SyndEntry> syndEntries = new ArrayList<>();
         try {
             XmlReader xmlReader = new XmlReader(new URL(Constants.PDLComicFeedURL));

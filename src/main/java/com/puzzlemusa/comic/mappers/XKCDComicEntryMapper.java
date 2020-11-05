@@ -13,15 +13,15 @@ import java.util.List;
 @Component
 public class XKCDComicEntryMapper {
 
-    public List<ComicResponseEntry> mapXKCDEntryToResponseEntry(List<XKCDComicEntry> xkcdComicEntries){
+    public List<ComicResponseEntry> mapXKCDEntryToResponseEntry(List<XKCDComicEntry> xkcdComicEntries) {
 
         List<ComicResponseEntry> comicResponseEntries = new ArrayList<>();
-        for(XKCDComicEntry xkcdComicEntry: xkcdComicEntries){
+        for (XKCDComicEntry xkcdComicEntry : xkcdComicEntries) {
             String title = xkcdComicEntry.getTitle();
             String pictureURL = xkcdComicEntry.getImg();
             String webURL = xkcdComicEntry.getLink();
             String dateText = xkcdComicEntry.getDay() + "-" + xkcdComicEntry.getMonth() + "-" + xkcdComicEntry.getYear();
-            Date publishingDate= null;
+            Date publishingDate = null;
             try {
                 publishingDate = new SimpleDateFormat("dd-MM-yyyy").parse(dateText);
             } catch (ParseException e) {

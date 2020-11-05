@@ -3,7 +3,8 @@ package com.puzzlemusa.comic.entries;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class XKCDComicEntry {
     private String month;
     private int num;

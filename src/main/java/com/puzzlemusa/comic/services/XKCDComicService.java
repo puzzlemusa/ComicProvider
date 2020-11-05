@@ -26,13 +26,13 @@ public class XKCDComicService {
         List<XKCDComicEntry> xkcdComics = new ArrayList<>();
 
         XKCDComicEntry currentXKCDComicEntry = getCurrentComic();
-        if(currentXKCDComicEntry != null){
+        if (currentXKCDComicEntry != null) {
             xkcdComics.add(currentXKCDComicEntry);
 
             int currentComicNumber = currentXKCDComicEntry.getNum();
-            for(int i=0; i<9; i++){
+            for (int i = 0; i < 9; i++) {
                 ResponseEntity<XKCDComicEntry> entity = restTemplate.getForEntity(Constants.XKCDBaseComicURL + --currentComicNumber + Constants.XKCDComicURLSuffix, XKCDComicEntry.class);
-                if(entity.getStatusCode() == HttpStatus.OK)
+                if (entity.getStatusCode() == HttpStatus.OK)
                     xkcdComics.add(entity.getBody());
             }
         }
@@ -43,7 +43,7 @@ public class XKCDComicService {
 
     private XKCDComicEntry getCurrentComic() {
         ResponseEntity<XKCDComicEntry> entity = restTemplate.getForEntity(Constants.XKCDCurrentComicURL, XKCDComicEntry.class);
-        if(entity.getStatusCode() == HttpStatus.OK)
+        if (entity.getStatusCode() == HttpStatus.OK)
             return entity.getBody();
         else return null;
     }
