@@ -17,10 +17,10 @@ import java.util.List;
 public class XKCDComicService {
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
-    XKCDComicEntryMapper xkcdComicEntryMapper;
+    private XKCDComicEntryMapper xkcdComicEntryMapper;
 
     public List<ComicResponseEntry> getComics() {
         List<XKCDComicEntry> xkcdComics = new ArrayList<>();
